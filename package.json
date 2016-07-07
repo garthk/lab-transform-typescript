@@ -1,0 +1,31 @@
+{
+  "name": "lab-transform-typescript",
+  "version": "1.0.0",
+  "description": "transform TypeScript for the lab testing framework",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/garthk/lab-transform-typescript.git"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "lab --transform . test --verbose --sourcemaps"
+  },
+  "keywords": [
+    "lab",
+    "typescript",
+    "coverage",
+    "test"
+  ],
+  "author": "Garth Kidd <garth@garthk.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "code": "^3.0.1",
+    "cross-env": "^1.0.8",
+    "in-publish": "^2.0.0",
+    "lab": "^10.8.2",
+    "typings": "^1.3.1"
+  },
+  "dependencies": {
+    "typescript": "^1.8.10"
+  }
+}

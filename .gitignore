@@ -1,0 +1,6 @@
+dist
+npm-debug.log
+.vscode
+typings
+lab-transform-typescript-*.tgz
+node_modules
