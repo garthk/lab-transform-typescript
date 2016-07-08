@@ -12,8 +12,8 @@ Usage:
 
 If you'd like `typings` support for `lab` and `code`, also:
 
-* `typings install --save --global github:garthk/lab-transform-typescript/typings-local/code.d.ts`
 * `typings install --save --global github:garthk/lab-transform-typescript/typings-local/lab.d.ts`
+* `typings install --save --global github:garthk/lab-transform-typescript/typings-local/code.d.ts`
 
 The typings for `code` are thorough. The typings for `lab` are pretty thin.
 I'd much appreciate feedback on and pull requests for improvements on either.
