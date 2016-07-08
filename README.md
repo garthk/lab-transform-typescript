@@ -20,7 +20,9 @@ I'd much appreciate feedback on and pull requests for improvements on either.
 
 Issues:
 
-* hapijs/lab#614: `lab --coverage` output shows the transpiled JavaScript, not the
-  source TypeScript.
+* [`#1`][ltt1] aka [`hapijs/lab#614`][lab614]: `lab --coverage` output shows
+  the transpiled JavaScript, not the source TypeScript.
 
 [lab]: https://github.com/hapijs/lab
+[lab614]: https://github.com/hapijs/lab/issues/614
+[ltt1]: https://github.com/garthk/lab-transform-typescript/issues/1
