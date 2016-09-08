@@ -26,6 +26,9 @@ declare module 'lab' {
         experiment: (description: string, experiment: Experiment) => any
         test: (description: string, test: Test) => any
         before: (TakesCallback) => void
+        beforeEach: (TakesCallback) => void
+        after: (TakesCallback) => void
+        afterEach: (TakesCallback) => void
     }
     export function script(options?: any): Laboratory;
 }
