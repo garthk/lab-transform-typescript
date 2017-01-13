@@ -1,4 +1,10 @@
 const ts = require('typescript');
+const { version, name } = require('./package.json');
+
+require('debug')(name)('versions', {
+    [name]: version,
+    typescript: ts.version,
+});
 
 // Note the compilerOptions need to have all enums resolved from strings to
 // enum members. Refer to the CompilerOptions interface for more details:
