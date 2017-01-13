@@ -23,6 +23,21 @@ I'd much appreciate feedback on and pull requests for improvements on either.
 * [`#1`][ltt1] aka [`hapijs/lab#614`][lab614]: `lab --coverage` output shows
   the transpiled JavaScript, not the source TypeScript.
 
+**Caveats:**
+
+Which version of `typescript` you get depends on how you installed it:
+
+* If you installed with `npm install` as abovr, you'll get the `typescript` from your project's `node_modules`
+* If you used `npm link` to take a reference to `lab-transform-typescript` while fixing a bug in it, you'll get the `typescript` from `lab-transform-typescript/node_modules`
+
+Set `DEBUG=*` or `DEBUG=lab-transform-typescript` to see a version report on stderr.
+
+**Change Log:**
+
+* 2.0.0: moved `typescript` from `dependencies` to `devDependencies` for testing and `peerDependencies` for production use.
+* 1.0.1: added more typings for `lab`
+* 1.0.0: initial release
+
 [lab]: https://github.com/hapijs/lab
 [lab614]: https://github.com/hapijs/lab/issues/614
 [ltt1]: https://github.com/garthk/lab-transform-typescript/issues/1
