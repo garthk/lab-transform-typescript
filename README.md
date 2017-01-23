@@ -27,7 +27,7 @@ I'd much appreciate feedback on and pull requests for improvements on either.
 
 Which version of `typescript` you get depends on how you installed it:
 
-* If you installed with `npm install` as abovr, you'll get the `typescript` from your project's `node_modules`
+* If you installed with `npm install` as above, you'll get the `typescript` from your project's `node_modules`
 * If you used `npm link` to take a reference to `lab-transform-typescript` while fixing a bug in it, you'll get the `typescript` from `lab-transform-typescript/node_modules`
 
 Set `DEBUG=*` or `DEBUG=lab-transform-typescript` to see a version report on stderr.
