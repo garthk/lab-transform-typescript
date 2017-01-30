@@ -19,6 +19,7 @@
   "author": "Garth Kidd <garth@garthk.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^7.0.4",
     "code": "^3.0.1",
     "cross-env": "^1.0.8",
     "in-publish": "^2.0.0",
