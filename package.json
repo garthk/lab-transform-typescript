@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "test": "lab --transform . test --verbose --sourcemaps"
+    "test": "lab --transform . test"
   },
   "keywords": [
     "lab",
