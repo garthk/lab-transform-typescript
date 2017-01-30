@@ -1,6 +1,6 @@
 {
   "name": "lab-transform-typescript",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "transform TypeScript for the lab testing framework",
   "repository": {
     "type": "git",
@@ -29,6 +29,6 @@
     "debug": "^2.6.0"
   },
   "peerDependencies": {
-    "typescript": "1.x || 2.x"
+    "typescript": ">=2.1.5"
   }
 }

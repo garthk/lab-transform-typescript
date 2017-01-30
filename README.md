@@ -30,11 +30,16 @@ Which version of `typescript` you get depends on how you installed it:
 * If you installed with `npm install` as above, you'll get the `typescript` from your project's `node_modules`
 * If you used `npm link` to take a reference to `lab-transform-typescript` while fixing a bug in it, you'll get the `typescript` from `lab-transform-typescript/node_modules`
 
-Set `DEBUG=*` or `DEBUG=lab-transform-typescript` to see a version report on stderr.
+**Environment Variables:**
+
+Set `DEBUG=*` or `DEBUG=lab-transform-typescript` to see a version report and configuration loading details on stderr.
+
+Set `TSCONFIG` to override TypeScript's default search for `tsconfig.json`, as if you'd set `-p` on the `tsc` command line.
 
 **Change Log:**
 
-* 2.0.0: moved `typescript` from `dependencies` to `devDependencies` for testing and `peerDependencies` for production use.
+* 3.0.0: switched to TypeScript's configuration loader and parser (set `TSCONFIG` envar to override location)
+* 2.0.0: moved `typescript` from `dependencies` to `devDependencies` for testing and `peerDependencies` for production use
 * 1.0.1: added more typings for `lab`
 * 1.0.0: initial release
 
