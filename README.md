@@ -38,6 +38,7 @@ Set `TSCONFIG` to override TypeScript's default search for `tsconfig.json`, as i
 
 **Change Log:**
 
+* 3.0.1: inlined source maps to fix error line numbers
 * 3.0.0: switched to TypeScript's configuration loader and parser (set `TSCONFIG` envar to override location)
 * 2.0.0: moved `typescript` from `dependencies` to `devDependencies` for testing and `peerDependencies` for production use
 * 1.0.1: added more typings for `lab`
