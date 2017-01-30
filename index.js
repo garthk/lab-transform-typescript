@@ -15,10 +15,19 @@ const cache = {};
 function tsify(content, fileName) {
     const searchPath = ts.normalizePath(ts.sys.getCurrentDirectory());
     const configFileName = process.env.TSCONFIG || ts.findConfigFile(searchPath, ts.sys.fileExists);
+
     const compilerOptions = getCompilerOptionsViaCache(configFileName);
+    compilerOptions.sourceMap = false;
+    compilerOptions.inlineSourceMap = true;
 
     debug('transpileModule', { fileName });
-    const { outputText } = ts.transpileModule(content, { fileName, compilerOptions });
+    const { outputText, diagnostics } = ts.transpileModule(content, {
+        fileName,
+        compilerOptions,
+        reportDiagnostics: true,
+    });
+    debug({ diagnostics });
+
     return outputText;
 }
 
