@@ -1,4 +1,4 @@
-declare module 'lab' {
+declare module Lab {
     type ScriptOptions = {
         schedule?: boolean;
         cli?: CommandLineSettings;
@@ -9,7 +9,7 @@ declare module 'lab' {
      * `globals` split into an array, `id` moved to `ids`, and silence`
      * and `verbose` being flattened into `progress`.
      */
-    type CommandLineSettings = {
+    interface CommandLineSettings {
         /** An assertion library module path to require and make available under `Lab.assertions` */
         assert?: string;
 
@@ -110,12 +110,12 @@ declare module 'lab' {
         verbose?: boolean;
     }
 
-    export type ReporterType = 'clover' | 'console' | 'html' | 'json' | 'junit' | 'lcov' | 'tap';
+    type ReporterType = 'clover' | 'console' | 'html' | 'json' | 'junit' | 'lcov' | 'tap';
 
     /**
      * Progress reporting level
      */
-    export const enum ProgressReporting {
+    const enum ProgressReporting {
         /** No dots or test names */
         Silence = 0,
 
@@ -158,7 +158,7 @@ declare module 'lab' {
      */
     type Hook = TakesCallback | ReturnsPromise;
 
-    export type Laboratory = {
+    type Script = {
         experiment: (description: string, experiment: Experiment) => any;
         test: (description: string, test: Test) => any;
         before: (fn: Hook) => void;
@@ -166,6 +166,8 @@ declare module 'lab' {
         after: (fn: Hook) => void;
         afterEach: (fn: Hook) => void;
     }
+}
 
-    export function script(options?: Lab.ScriptOptions): Laboratory;
+declare module 'lab' {
+    export function script(options?: Lab.ScriptOptions): Lab.Script;
 }

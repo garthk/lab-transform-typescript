@@ -19,7 +19,7 @@ export const lab = script({
     }
 });
 
-global['leakedButOK'] = true;
+(global as any)['leakedButOK'] = true;
 
 const debug = require('debug')('lab-transform-typescript:test');
 
@@ -62,7 +62,7 @@ lab.experiment('experiment', () => {
     lab.test('promise', () => debugp('promise test'));
 });
 
-function debugp(message): Promise<void> {
+function debugp(message: string): Promise<void> {
     return new Promise<void>(resolve => {
         setImmediate(() => {
             debug(message);

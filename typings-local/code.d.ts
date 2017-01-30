@@ -75,8 +75,8 @@ declare module 'code' {
         instanceof<R>(type: Newable<R>): Expectation<T>;
         match: (regex: RegExp) => Expectation<T>
         matches: (regex: RegExp) => Expectation<T>
-        satisfy: (validator: (T) => boolean) => Expectation<T>
-        satisfies: (validator: any) => Expectation<T>
+        satisfy: (validator: (value: T) => boolean) => Expectation<T>
+        satisfies: (validator: (value: T) => boolean) => Expectation<T>
         throw: (type?: typeString, message?: string | RegExp) => Expectation<T>
         throws: (type?: typeString, message?: string | RegExp) => Expectation<T>
     }
