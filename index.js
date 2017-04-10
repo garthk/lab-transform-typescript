@@ -1,7 +1,19 @@
-const ts = require('typescript');
-const { version, name } = require('./package.json');
-const { join, dirname } = require('path');
-const { access, constants, readFileSync } = require('fs');
+var ts = require('typescript');
+
+var _require = require('./package.json'),
+    version = _require.version,
+    name = _require.name;
+
+var _require2 = require('path'),
+    join = _require2.join,
+    dirname = _require2.dirname;
+
+var _require3 = require('fs'),
+    access = _require3.access,
+    constants = _require3.constants,
+    readFileSync = _require3.readFileSync;
+
+var debug = require('debug')(name);
 
 const debug = require('debug')(name);
 
