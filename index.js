@@ -57,7 +57,7 @@ function getCompilerOptionsViaCache(configFileName) {
 function getCompilerOptions(configFileName) {
     const readConfigFile = ts.readConfigFile(configFileName, ts.sys.readFile);
     const config = readConfigFile.config;
-    const error = readConfigFile.readConfigFile;
+    const error = readConfigFile.error;
    
     if (error) {
         throw new Error(`TS config error in ${configFileName}: ${error.messageText}`);
