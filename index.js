@@ -1,19 +1,17 @@
-var ts = require('typescript');
+const ts = require('typescript');
 
-var _require = require('./package.json'),
-    version = _require.version,
-    name = _require.name;
+const package = require('./package.json');
+const version = package.version;
+const name = package.name;
 
-var _require2 = require('path'),
-    join = _require2.join,
-    dirname = _require2.dirname;
+const path = require('path');
+const join = path.join;
+const dirname = path.dirname;
 
-var _require3 = require('fs'),
-    access = _require3.access,
-    constants = _require3.constants,
-    readFileSync = _require3.readFileSync;
-
-var debug = require('debug')(name);
+const fs = require('fs');
+const access = fs.access;
+const constants = fs.constants;
+const readFileSync = fs.readFileSync;
 
 const debug = require('debug')(name);
 
@@ -33,11 +31,14 @@ function tsify(content, fileName) {
     compilerOptions.inlineSourceMap = true;
 
     debug('transpileModule', { fileName });
-    const { outputText, diagnostics } = ts.transpileModule(content, {
+    const transpileModule = ts.transpileModule(content, {
         fileName,
         compilerOptions,
         reportDiagnostics: true,
     });
+    const outputText = transpileModule.outputText;
+    const diagnostics = transpileModule.diagnostics
+
     debug({ diagnostics });
 
     return outputText;
@@ -54,17 +55,20 @@ function getCompilerOptionsViaCache(configFileName) {
 }
 
 function getCompilerOptions(configFileName) {
-    const { config, error } = ts.readConfigFile(configFileName, ts.sys.readFile);
+    const readConfigFile = ts.readConfigFile(configFileName, ts.sys.readFile);
+    const config = readConfigFile.config;
+    const error = readConfigFile.readConfigFile;
+   
     if (error) {
         throw new Error(`TS config error in ${configFileName}: ${error.messageText}`);
     }
 
-    const { options } = ts.parseJsonConfigFileContent(
+    const options = ts.parseJsonConfigFileContent(
         config,
         ts.sys,
         ts.getDirectoryPath(configFileName),
         {},
-        configFileName);
+        configFileName).options;
     debug('getCompilerOptions', { configFileName, options });
     return options;
 }
