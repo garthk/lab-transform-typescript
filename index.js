@@ -1,22 +1,10 @@
 const ts = require('typescript');
 
 const package = require('./package.json');
-const version = package.version;
-const name = package.name;
-
-const path = require('path');
-const join = path.join;
-const dirname = path.dirname;
-
-const fs = require('fs');
-const access = fs.access;
-const constants = fs.constants;
-const readFileSync = fs.readFileSync;
-
-const debug = require('debug')(name);
+const debug = require('debug')(package.name);
 
 debug('versions', {
-    [name]: version,
+    [name]: package.version,
     typescript: ts.version,
 });
 
@@ -56,15 +44,13 @@ function getCompilerOptionsViaCache(configFileName) {
 
 function getCompilerOptions(configFileName) {
     const readConfigFile = ts.readConfigFile(configFileName, ts.sys.readFile);
-    const config = readConfigFile.config;
-    const error = readConfigFile.error;
    
-    if (error) {
+    if (readConfigFile.error) {
         throw new Error(`TS config error in ${configFileName}: ${error.messageText}`);
     }
 
     const options = ts.parseJsonConfigFileContent(
-        config,
+        readConfigFile.config,
         ts.sys,
         ts.getDirectoryPath(configFileName),
         {},
