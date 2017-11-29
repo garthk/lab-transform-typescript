@@ -1,12 +1,10 @@
 const ts = require('typescript');
-const { version, name } = require('./package.json');
-const { join, dirname } = require('path');
-const { access, constants, readFileSync } = require('fs');
 
-const debug = require('debug')(name);
+const package = require('./package.json');
+const debug = require('debug')(package.name);
 
 debug('versions', {
-    [name]: version,
+    [name]: package.version,
     typescript: ts.version,
 });
 
@@ -21,11 +19,14 @@ function tsify(content, fileName) {
     compilerOptions.inlineSourceMap = true;
 
     debug('transpileModule', { fileName });
-    const { outputText, diagnostics } = ts.transpileModule(content, {
+    const transpileModule = ts.transpileModule(content, {
         fileName,
         compilerOptions,
         reportDiagnostics: true,
     });
+    const outputText = transpileModule.outputText;
+    const diagnostics = transpileModule.diagnostics
+
     debug({ diagnostics });
 
     return outputText;
@@ -42,17 +43,18 @@ function getCompilerOptionsViaCache(configFileName) {
 }
 
 function getCompilerOptions(configFileName) {
-    const { config, error } = ts.readConfigFile(configFileName, ts.sys.readFile);
-    if (error) {
+    const readConfigFile = ts.readConfigFile(configFileName, ts.sys.readFile);
+   
+    if (readConfigFile.error) {
         throw new Error(`TS config error in ${configFileName}: ${error.messageText}`);
     }
 
-    const { options } = ts.parseJsonConfigFileContent(
-        config,
+    const options = ts.parseJsonConfigFileContent(
+        readConfigFile.config,
         ts.sys,
         ts.getDirectoryPath(configFileName),
         {},
-        configFileName);
+        configFileName).options;
     debug('getCompilerOptions', { configFileName, options });
     return options;
 }
